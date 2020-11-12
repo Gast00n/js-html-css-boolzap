@@ -18,9 +18,9 @@
         <aside class="side">
             <!-- USERBAR -->
             <div class="userbar">
-                <div class="user">
-                    <img class="img" src="./images/avatar_io.jpg" alt="User avatar">
-                    <h3 class="username">Nome Utente</h3>
+                <div class="user" v-model="user">
+                    <img class="img" :src="'./images/avatar'+ user.avatar +'.jpg'" alt="User avatar">
+                    <h3 class="username">{{user.name}}</h3>
                 </div>
                 <div class="iconset">
                     <i class="fas fa-circle-notch"></i>
@@ -48,21 +48,9 @@
             <!-- CHATLIST -->
             <div class="chatlist">
                 <ul class="contacts">
-                    <li class="contact">
-                        <img class="img" src="./images/avatar_1.jpg" alt="">
-                        <span class="contact-name">Franco</span>
-                    </li>
-                    <li class="contact">
-                        <img class="img" src="./images/avatar_2.jpg" alt="">
-                        <span class="contact-name">Paolo</span>
-                    </li>
-                    <li class="contact">
-                        <img class="img" src="./images/avatar_3.jpg" alt="">
-                        <span class="contact-name">Luca</span>
-                    </li>
-                    <li class="contact">
-                        <img class="img" src="./images/avatar_5.jpg" alt="">
-                        <span class="contact-name">Alessio</span>
+                    <li v-for="(contact, index) in contacts" class="contact">
+                        <img class="img" :src="'./images/avatar'+ contact.avatar +'.jpg'" alt="">
+                        <span class="contact-name">{{contact.name}}</span>
                     </li>
                 </ul>
             </div>
