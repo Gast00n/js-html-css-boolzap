@@ -40,6 +40,13 @@ input::placeholder {
     color: #b5b9bb;
 }
 
+.hide {
+    display: none;
+}
+
+.show {display: block;
+}
+
 /* CONTENT */
 
 .container {
@@ -159,10 +166,14 @@ input::placeholder {
     display: flex;
     align-items: center;
     border-top: 1px solid #f5f5f5;
-
+    cursor: pointer;
 }
 
-.chatlist ul li:hover {
+li.contact:hover {
+    background: #eee;
+}
+
+li.active {
     background: #eee;
 }
 
@@ -184,14 +195,13 @@ input::placeholder {
 .cont-header {
     background: #eaeaea;
     width: 100%;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
 }
 
 .cont-header .header-user {
-    flex-grow: 1;
     display: inline-flex;
     align-items: center;
 }
@@ -208,6 +218,58 @@ input::placeholder {
     background-image: url(../images/mine.jpg);
     background-position: center;
     background-repeat: repeat;
+    padding: 30px 50px;
+}
+
+.row-sent {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.row-received {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.box {
+    width: 400px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: left;
+    position: relative;
+}
+
+.box i {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.box:hover i {
+    display: block;
+}
+
+.box small {
+    color: #ccc;
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.sent {
+    background: #cbfbb3;
+}
+
+.received {
+    background: #fff;
 }
 
 /* Footer Section */
