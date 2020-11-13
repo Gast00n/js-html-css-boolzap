@@ -9,7 +9,6 @@ var app = new Vue({
             name: 'Nome Utente',
             avatar: '_io'
         },
-        activeID: '',
         // Elenco contatti
         contacts: [
             {
@@ -96,14 +95,26 @@ var app = new Vue({
                 ],
             },
         ],
+        activeID: 0,
+        activeChat: [],
+        activeMsg: []
         
-    },
-    created() { 
-
     },
     methods: {
         openChat(index) {
-            this.activeID = index;
-        }
+                this.activeID = index;
+                this.contacts.forEach(content => {
+                    if (this.activeID == this.contacts.index) {
+                        this.activeChat.push(content);
+                    }
+                });
+                console.log(this.activeID);
+                console.log(this.activeChat);
+
+
+                //  = this.contacts[index];
+                // this.actualMessage = this.activeChat.messages;
+                // console.log(this.actualMsg);
+            }
     }
 });
