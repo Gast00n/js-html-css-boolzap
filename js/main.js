@@ -95,26 +95,12 @@ var app = new Vue({
                 ],
             },
         ],
-        activeID: 0,
-        activeChat: [],
-        activeMsg: []
+        activeID: '0',
         
     },
     methods: {
         openChat(index) {
                 this.activeID = index;
-                this.contacts.forEach(content => {
-                    if (this.activeID == this.contacts.index) {
-                        this.activeChat.push(content);
-                    }
-                });
-                console.log(this.activeID);
-                console.log(this.activeChat);
-
-
-                //  = this.contacts[index];
-                // this.actualMessage = this.activeChat.messages;
-                // console.log(this.actualMsg);
             }
     }
 });
