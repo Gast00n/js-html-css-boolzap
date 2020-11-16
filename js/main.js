@@ -96,11 +96,24 @@ var app = new Vue({
             },
         ],
         activeID: '0',
+        newMsg: ''
         
     },
     methods: {
         openChat(index) {
                 this.activeID = index;
+        },
+
+        sendMsg() {
+            if (this.newMsg.trim() !== '') {
+                this.contacts[this.activeID].messages.push({
+                    date: dayjs().format('DD/MM/YY HH:mm:ss'),
+                    message: this.newMsg.trim(),
+                    status: 'sent'
+                });
             }
+
+        }
+
     }
 });

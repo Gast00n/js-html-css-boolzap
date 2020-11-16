@@ -85,7 +85,7 @@
             <!-- Footer Section -->
             <section class="cont-footer">
                 <i class="far fa-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
+                <input @keyup.enter="sendMsg" v-model="newMsg" type="text" placeholder="Scrivi un messaggio">
                 <i class="fas fa-microphone"></i>
             </section>
         </main>
@@ -93,6 +93,8 @@
     </div>
 
     <!-- Include JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/locale/it.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
