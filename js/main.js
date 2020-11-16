@@ -111,9 +111,16 @@ var app = new Vue({
                     message: this.newMsg.trim(),
                     status: 'sent'
                 });
+
+                setTimeout(this.newAnsw(), 3000);
             }
+        },
 
+        newAnsw() {
+            this.contacts[this.activeID].messages.push({
+                date: dayjs().format('DD/MM/YY HH:mm:ss'),
+                message: 'Grande amico!',
+                status: 'received'});
         }
-
     }
 });
