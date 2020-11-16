@@ -269,14 +269,14 @@ li.active {
 }
 
 .sent::before {
-    content:'';
-    position:absolute;
-    bottom: 10px;
-    right:-4px;
-    width:8px;
-    height: 8px;
-    background: #cbfbb3;
-    transform: rotate(45deg);
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -8px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #cbfbb3;
+    border-right: 10px solid transparent;
 }
 
 .received {
@@ -286,12 +286,12 @@ li.active {
 .received::before {
     content:'';
     position:absolute;
-    bottom: 10px;
-    left:-4px;
-    width:8px;
-    height: 8px;
-    background: #fff;
-    transform: rotate(45deg);
+    top: 0px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #fff;
+    border-left: 10px solid transparent;
 }
 
 
