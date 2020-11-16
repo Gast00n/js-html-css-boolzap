@@ -75,7 +75,7 @@
             <!-- Content Section -->
             <section class="cont-main">
                 <div  v-for="(message, index) in contacts[activeID].messages" :class="message.status == 'sent' ? 'row-sent' : 'row-received'">
-                    <div class="box" :class="message.status == 'sent' ? 'sent' : 'received'">
+                    <div class="box" :class="message.status">
                         <p>{{message.message}}<small>{{message.date}}</small></p>
                         <i class="fas fa-chevron-down"></i>
                     </div>
