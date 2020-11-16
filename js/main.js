@@ -111,8 +111,9 @@ var app = new Vue({
                     message: this.newMsg.trim(),
                     status: 'sent'
                 });
-
+                this.newMsg = '';
                 setTimeout(this.newAnsw(), 3000);
+
             }
         },
 
