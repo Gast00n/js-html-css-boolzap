@@ -41,14 +41,14 @@
             <div class="search">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input @keyup="searchBar" v-model="searchTxt" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
 
             <!-- CHATLIST -->
             <div class="chatlist">
                 <ul class="contacts">
-                    <li v-for="(contact, index) in contacts" class="contact" :class="activeID == index ? 'active' : ''"  @click="openChat(index)">
+                    <li v-show="contact.visible == true" v-for="(contact, index) in contacts" class="contact" :class="activeID == index ? 'active' : ''"  @click="openChat(index)">
                         <img class="img" :src="'./images/avatar'+ contact.avatar +'.jpg'" alt="">
                         <span class="contact-name">{{contact.name}}</span>
                     </li>

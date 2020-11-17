@@ -96,7 +96,8 @@ var app = new Vue({
             },
         ],
         activeID: '0',
-        newMsg: ''
+        newMsg: '',
+        searchTxt: '',
         
     },
     methods: {
@@ -106,22 +107,29 @@ var app = new Vue({
 
         sendMsg() {
             if (this.newMsg.trim() !== '') {
-                this.contacts[this.activeID].messages.push({
-                    date: dayjs().format('DD/MM/YY HH:mm:ss'),
+
+                const activeMessages = this.contacts[this.activeID].messages;
+
+                activeMessages.push({
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
                     message: this.newMsg.trim(),
                     status: 'sent'
                 });
+
                 this.newMsg = '';
-                setTimeout(this.newAnsw(), 3000);
 
-            }
+                setTimeout(() => {
+                    activeMessages.push({
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                        message: 'Grande amico!',
+                        status: 'received'    
+                    });
+                }, 1000);
+        }
         },
+        searchBar() {
 
-        newAnsw() {
-            this.contacts[this.activeID].messages.push({
-                date: dayjs().format('DD/MM/YY HH:mm:ss'),
-                message: 'Grande amico!',
-                status: 'received'});
         }
     }
+        
 });
