@@ -41,7 +41,7 @@
             <div class="search">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input @keyup="searchBar" v-model="searchTxt" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input @keyup="searchBar(index)" v-model="searchTxt" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
             <section class="cont-header">
                 <div class="header-user">
                     <img  class="img" :src="'./images/avatar' + contacts[activeID].avatar + '.jpg'" alt="avatar">
-                    <h3 class="active-user">{{contacts[activeID].name}}<small class="activity">Ultimo accesso oggi alle 10:35</small></h3>
+                    <h3 class="active-user">{{contacts[activeID].name}}<small class="activity">Ultimo accesso {{contacts[activeID].lastAct}}</small></h3>
                 </div>
                 <div class="iconset">
                     <i class="fas fa-search"></i>
