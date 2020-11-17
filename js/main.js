@@ -16,6 +16,7 @@ var app = new Vue({
                 avatar: '_1',
                 visible: true,
                 lastAct:'10/01 16:15',
+                lastMsg: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -39,6 +40,7 @@ var app = new Vue({
                 avatar: '_2',
                 visible: true,
                 lastAct:'20/03 16:35',
+                lastMsg: '',
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -62,6 +64,7 @@ var app = new Vue({
                 avatar: '_3',
                 visible: true,
                 lastAct:'28/03 16:15',
+                lastMsg: '',
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -85,6 +88,7 @@ var app = new Vue({
                 avatar: '_4',
                 visible: true,
                 lastAct:'10/01 15:50',
+                lastMsg: '',
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -129,24 +133,25 @@ var app = new Vue({
                         message: 'Grande amico!',
                         status: 'received',
                     });
-                    this.contacts[this.activeID].lastAct = 'Oggi alle ' + dayjs().format('HH:mm');
                 }, 1000);
             }
         },
-        searchBar(index) {
-            this.contacts.forEach(index => {
-                console.log(index);
-                let nameVer = this.contacts[index].name;
-                console.log(nameVer);
-                if (this.searchTxt = '') {
-                    this.contacts[index].visibility = true;
+        deleteMsg(index) {
+            const del = this.contacts[this.activeID].messages;
+            del.splice(index, 1);
+        },        
+        searchBar() {
+            this.contacts.forEach(contact => {
+                let nameVer = contact.name.toLowerCase();
+                if (this.searchTxt == '') {
+                    contact.visible = true;
                     return
                 }
 
                 if (! nameVer.includes(this.searchTxt)) {
-                    this.contacts[index].visibility = false;
+                    contact.visible = false;
                 } else {
-                    this.contacts[index].visibility = true; 
+                    contact.visible = true; 
                 }
             });
         }

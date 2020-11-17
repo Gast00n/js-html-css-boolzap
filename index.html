@@ -41,7 +41,7 @@
             <div class="search">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input @keyup="searchBar(index)" v-model="searchTxt" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input @keyup="searchBar" v-model="searchTxt" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
                 <ul class="contacts">
                     <li v-show="contact.visible == true" v-for="(contact, index) in contacts" class="contact" :class="activeID == index ? 'active' : ''"  @click="openChat(index)">
                         <img class="img" :src="'./images/avatar'+ contact.avatar +'.jpg'" alt="">
-                        <span class="contact-name">{{contact.name}}</span>
+                        <span class="contact-name">{{contact.name}}<small>{{contact.lastMsg}}</small></span><span class="date-chat">{{contact.lastAct}}</span>
                     </li>
                 </ul>
             </div>
@@ -77,10 +77,12 @@
                 <div  v-for="(message, index) in contacts[activeID].messages" :class="message.status == 'sent' ? 'row-sent' : 'row-received'">
                     <div class="box" :class="message.status">
                         <p>{{message.message}}<small>{{message.date}}</small></p>
-                        <i class="fas fa-chevron-down"></i>
+                        <i @click="deleteMsg(index)" class="fas fa-times"></i>
                     </div>
                 </div>
             </section>
+
+
 
             <!-- Footer Section -->
             <section class="cont-footer">
