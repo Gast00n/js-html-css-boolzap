@@ -111,6 +111,7 @@ var app = new Vue({
     methods: {
         openChat(index) {
                 this.activeID = index;
+                this.contacts[this.activeID].lastMsg = lastMsg(this.activeID);
         },
 
         sendMsg() {
@@ -133,6 +134,8 @@ var app = new Vue({
                         message: 'Grande amico!',
                         status: 'received',
                     });
+                    this.contacts[this.activeID].lastAct = dayjs().format('DD/MM HH:mm')
+                    this.contacts[this.activeID].lastMsg = lastMsg(this.activeID);
                 }, 1000);
             }
         },
@@ -142,18 +145,27 @@ var app = new Vue({
         },        
         searchBar() {
             this.contacts.forEach(contact => {
-                let nameVer = contact.name.toLowerCase();
+                let nameVer = contact.name;
                 if (this.searchTxt == '') {
                     contact.visible = true;
                     return
                 }
-
-                if (! nameVer.includes(this.searchTxt)) {
-                    contact.visible = false;
+                const lowTxt = this.searchTxt.toLowerCase();
+                const higTxt = this.searchTxt.toUpperCase();
+                console.log(lowTxt);
+                console.log(higTxt);
+                if ( (nameVer.includes(lowTxt)) || (nameVer.includes(higTxt)) ) {
+                    contact.visible = true;
                 } else {
-                    contact.visible = true; 
+                    contact.visible = false; 
                 }
             });
+        },
+        lastMsg(index) {
+            const i = this.contacts[index].messages.length() - 1;
+
+            this.lastMsg = this.contacts[index].messages[i].message;
+            console.log(this.contacts[index].messages[i].message);
         }
     }
         
