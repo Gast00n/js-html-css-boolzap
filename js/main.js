@@ -111,7 +111,7 @@ var app = new Vue({
     methods: {
         openChat(index) {
                 this.activeID = index;
-                this.contacts[this.activeID].lastMsg = lastMsg(this.activeID);
+                // this.contacts[this.activeID].lastMsg = lastMsg();
         },
 
         sendMsg() {
@@ -135,7 +135,7 @@ var app = new Vue({
                         status: 'received',
                     });
                     this.contacts[this.activeID].lastAct = dayjs().format('DD/MM HH:mm')
-                    this.contacts[this.activeID].lastMsg = lastMsg(this.activeID);
+                    // this.contacts[this.activeID].lastMsg = lastMsg();
                 }, 1000);
             }
         },
@@ -161,12 +161,10 @@ var app = new Vue({
                 }
             });
         },
-        lastMsg(index) {
-            const i = this.contacts[index].messages.length() - 1;
-
-            this.lastMsg = this.contacts[index].messages[i].message;
-            console.log(this.contacts[index].messages[i].message);
-        }
+        // lastMsg() {
+        //     this.lastMsg = this.contacts[index].messages[i].message;
+        //     console.log(this.contacts[index].messages[i].message);
+        // }
     }
         
 });
